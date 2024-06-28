@@ -113,6 +113,8 @@ int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, 
             return EXIT_FAILURE;
         }
 
+        std::cout << "o-w: " << widths << " o-height: " << heights << "subsampling: " << subsampling << "dpImage: " << dpImage << "nSize: " << nSize << "nComponent: " << nComponent << std::endl;
+
         if(resizeWidth == 0 || resizeHeight == 0)
         {
             resizeWidth = widths[0]/2;
