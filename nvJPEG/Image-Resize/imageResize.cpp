@@ -36,7 +36,7 @@
 // *****************************************************************************
 // nvJPEG handles and parameters
 // -----------------------------------------------------------------------------
-nvjpegBackend_t impl = NVJPEG_BACKEND_LOSSLESS_JPEG;//NVJPEG_BACKEND_GPU_HYBRID; //NVJPEG_BACKEND_DEFAULT;
+nvjpegBackend_t impl = NVJPEG_BACKEND_GPU_HYBRID;//NVJPEG_BACKEND_GPU_HYBRID; //NVJPEG_BACKEND_DEFAULT;
 nvjpegHandle_t nvjpeg_handle;
 nvjpegJpegStream_t nvjpeg_jpeg_stream;
 nvjpegDecodeParams_t nvjpeg_decode_params;
@@ -234,6 +234,7 @@ int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, 
         // get encoding from the jpeg stream and copy it to the encode parameters
 #ifdef CUDA10U2 // This part needs CUDA 10.1 Update 2 for copy the metadata other information from base image.
         CHECK_NVJPEG(nvjpegJpegStreamGetJpegEncoding(nvjpeg_jpeg_stream, &nvjpeg_encoding));
+        std::cout << "CHECK_NVJPEG(nvjpegJpegStreamGetJpegEncoding(nvjpeg_jpeg_stream, &nvjpeg_encoding));: " << nvjpeg_encoding << std::endl;
         CHECK_NVJPEG(nvjpegEncoderParamsSetEncoding(nvjpeg_encode_params, nvjpeg_encoding, NULL));
         CHECK_NVJPEG(nvjpegEncoderParamsCopyQuantizationTables(nvjpeg_encode_params, nvjpeg_jpeg_stream, NULL));
         CHECK_NVJPEG(nvjpegEncoderParamsCopyHuffmanTables(nvjpeg_encoder_state, nvjpeg_encode_params, nvjpeg_jpeg_stream, NULL));
