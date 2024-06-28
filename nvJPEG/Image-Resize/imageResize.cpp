@@ -35,7 +35,7 @@
 // *****************************************************************************
 // nvJPEG handles and parameters
 // -----------------------------------------------------------------------------
-nvjpegBackend_t impl = NVJPEG_BACKEND_GPU_HYBRID; //NVJPEG_BACKEND_DEFAULT;
+nvjpegBackend_t impl = NVJPEG_BACKEND_LOSSLESS_JPEG; //NVJPEG_BACKEND_DEFAULT;
 nvjpegHandle_t nvjpeg_handle;
 nvjpegJpegStream_t nvjpeg_jpeg_stream;
 nvjpegDecodeParams_t nvjpeg_decode_params;
@@ -188,7 +188,7 @@ int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, 
 #ifdef OPTIMIZED_HUFFMAN  // Optimized Huffman
         CHECK_NVJPEG(nvjpegEncoderParamsSetOptimizedHuffman(nvjpeg_encode_params, 1, NULL));
 #endif
-        CHECK_NVJPEG(nvjpegEncoderParamsSetSamplingFactors(nvjpeg_encode_params, (nvjpegChromaSubsampling_t)1, NULL));
+        CHECK_NVJPEG(nvjpegEncoderParamsSetSamplingFactors(nvjpeg_encode_params, subsampling, NULL));
 
 
         // Timing start
