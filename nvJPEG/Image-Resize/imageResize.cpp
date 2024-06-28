@@ -54,8 +54,8 @@ nvjpegJpegEncoding_t nvjpeg_encoding;
 int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, double &time, int resizeWidth, int resizeHeight, int resize_quality)
 {
     // Decode, Encoder format
-    nvjpegOutputFormat_t oformat = NVJPEG_OUTPUT_BGR;
-    nvjpegInputFormat_t iformat = NVJPEG_INPUT_BGR;
+    nvjpegOutputFormat_t oformat = NVJPEG_OUTPUT_UNCHANGED;
+    nvjpegInputFormat_t iformat = NVJPEG_OUTPUT_UNCHANGED;
 
     // timing for resize
     time = 0.;
@@ -113,7 +113,7 @@ int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, 
             return EXIT_FAILURE;
         }
 
-        std::cout << "o-w: " << widths << " o-height: " << heights << "subsampling: " << subsampling << "dpImage: " << dpImage << "nSize: " << nSize << "nComponent: " << nComponent << std::endl;
+        std::cout << "o-w: " << widths[0] << " o-height: " << heights[0] << "subsampling: " << subsampling << " dpImage: " << dpImage << "nSize: " << nSize << "nComponent: " << nComponent << std::endl;
 
         if(resizeWidth == 0 || resizeHeight == 0)
         {
@@ -135,7 +135,7 @@ int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, 
         nvjpegImage_t imgDesc;
         nvjpegImage_t imgResize;
 
-        if (is_interleaved(oformat))
+        if (t(oformat))
         {
             pitchDesc = NVJPEG_MAX_COMPONENT * widths[0];
             pitchResize = NVJPEG_MAX_COMPONENT * resizeWidth;
