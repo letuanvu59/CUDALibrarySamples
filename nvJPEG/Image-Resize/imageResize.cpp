@@ -55,7 +55,7 @@ int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, 
 {
     // Decode, Encoder format
     nvjpegOutputFormat_t oformat = NVJPEG_OUTPUT_UNCHANGED;
-    nvjpegInputFormat_t iformat = NVJPEG_OUTPUT_UNCHANGED;
+    nvjpegInputFormat_t iformat = NVJPEG_INPUT_RGB;
 
     // timing for resize
     time = 0.;
