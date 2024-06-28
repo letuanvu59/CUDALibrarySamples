@@ -54,8 +54,8 @@ nvjpegJpegEncoding_t nvjpeg_encoding;
 int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, double &time, int resizeWidth, int resizeHeight, int resize_quality)
 {
     // Decode, Encoder format
-    nvjpegOutputFormat_t oformat = NVJPEG_OUTPUT_BGR;
-    nvjpegInputFormat_t iformat = NVJPEG_INPUT_RGB;
+    nvjpegOutputFormat_t oformat = NVJPEG_OUTPUT_UNCHANGED;
+    nvjpegInputFormat_t iformat = NVJPEG_INPUT_BGR;
 
     // timing for resize
     time = 0.;
@@ -135,7 +135,7 @@ int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, 
         nvjpegImage_t imgDesc;
         nvjpegImage_t imgResize;
 
-        if (t(oformat))
+        if (is_interleaved(oformat))
         {
             pitchDesc = NVJPEG_MAX_COMPONENT * widths[0];
             pitchResize = NVJPEG_MAX_COMPONENT * resizeWidth;
