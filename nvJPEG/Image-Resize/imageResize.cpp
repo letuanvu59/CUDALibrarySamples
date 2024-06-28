@@ -31,6 +31,7 @@
 
 #define OPTIMIZED_HUFFMAN
 #define CUDA10U2
+#define NVJPEG_FLAGS_UPSAMPLING_WITH_INTERPOLATION   32
 
 // *****************************************************************************
 // nvJPEG handles and parameters
