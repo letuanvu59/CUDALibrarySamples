@@ -29,8 +29,8 @@
 
 #include "imageResize.h"
 
-//#define OPTIMIZED_HUFFMAN
-//#define CUDA10U2
+#define OPTIMIZED_HUFFMAN
+#define CUDA10U2
 
 // *****************************************************************************
 // nvJPEG handles and parameters
