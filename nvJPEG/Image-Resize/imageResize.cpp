@@ -54,7 +54,7 @@ nvjpegJpegEncoding_t nvjpeg_encoding;
 int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, double &time, int resizeWidth, int resizeHeight, int resize_quality)
 {
     // Decode, Encoder format
-    nvjpegOutputFormat_t oformat = NVJPEG_OUTPUT_RGB;
+    nvjpegOutputFormat_t oformat = NVJPEG_OUTPUT_UNCHANGED;
     nvjpegInputFormat_t iformat = NVJPEG_INPUT_RGB;
 
     // timing for resize
@@ -188,7 +188,7 @@ int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, 
 #ifdef OPTIMIZED_HUFFMAN  // Optimized Huffman
         CHECK_NVJPEG(nvjpegEncoderParamsSetOptimizedHuffman(nvjpeg_encode_params, 1, NULL));
 #endif
-        CHECK_NVJPEG(nvjpegEncoderParamsSetSamplingFactors(nvjpeg_encode_params, subsampling, NULL));
+        CHECK_NVJPEG(nvjpegEncoderParamsSetSamplingFactors(nvjpeg_encode_params, (nvjpegChromaSubsampling_t)1, NULL));
 
 
         // Timing start
