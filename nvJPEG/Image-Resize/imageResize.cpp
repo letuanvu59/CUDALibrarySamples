@@ -135,16 +135,16 @@ int decodeResizeEncodeOneImage(std::string sImagePath, std::string sOutputPath, 
         nvjpegImage_t imgDesc;
         nvjpegImage_t imgResize;
 
-        if (t(oformat))
-        {
-            pitchDesc = NVJPEG_MAX_COMPONENT * widths[0];
-            pitchResize = NVJPEG_MAX_COMPONENT * resizeWidth;
-        }
-        else
-        {
-            pitchDesc = 3 * widths[0];
-            pitchResize = 3 * resizeWidth;
-        }
+//        if (t(oformat))
+//        {
+//            pitchDesc = NVJPEG_MAX_COMPONENT * widths[0];
+//            pitchResize = NVJPEG_MAX_COMPONENT * resizeWidth;
+//        }
+//        else
+//        {
+        pitchDesc = 3 * widths[0];
+        pitchResize = 3 * resizeWidth;
+//        }
 
         cudaError_t eCopy = cudaMalloc(&pBuffer, pitchDesc * heights[0]);
         if (cudaSuccess != eCopy)
