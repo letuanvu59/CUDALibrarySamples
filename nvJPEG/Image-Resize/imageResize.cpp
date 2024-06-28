@@ -36,7 +36,7 @@
 // *****************************************************************************
 // nvJPEG handles and parameters
 // -----------------------------------------------------------------------------
-nvjpegBackend_t impl = NVJPEG_BACKEND_GPU_HYBRID;//NVJPEG_BACKEND_GPU_HYBRID; //NVJPEG_BACKEND_DEFAULT;
+nvjpegBackend_t impl = NVJPEG_BACKEND_LOSSLESS_JPEG;//NVJPEG_BACKEND_GPU_HYBRID; //NVJPEG_BACKEND_DEFAULT;
 nvjpegHandle_t nvjpeg_handle;
 nvjpegJpegStream_t nvjpeg_jpeg_stream;
 nvjpegDecodeParams_t nvjpeg_decode_params;
